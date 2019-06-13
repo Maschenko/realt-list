@@ -1,0 +1,38 @@
+<div class="width-realt">
+  <div class="create-realt">
+    <div class="title">
+      <span>Новый риэлтор</span>
+    </div>
+    <div class="create-realt-form">
+      <form (ngSubmit)="onSubmit()" class="form-add">
+        <div class="row">
+            <input type="text" placeholder="Имя" [(ngModel)]="item.name" name="name">
+            <input type="text" placeholder="Фамилия" [(ngModel)]="item.lastName" name="lastName">
+            <input type="date" placeholder="Дата" [(ngModel)]="item.dateOfRegistration" name="data">
+            <label>
+              Подразделение
+              <select name="department" [(ngModel)]="item.depName">
+                <!--<option disabled>Выберите героя</option>-->
+                <option *ngFor="let dept of departments" [value]="dept.depName">
+                  {{dept.depName}}
+                </option>
+              </select>
+            </label>
+          <input (click)="toggle()" [disabled]="!item.name || !item.lastName || !item.dateOfRegistration || !item.depName" type="submit" value="Добавить" class="btn">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="show">
+  <div style="display: flex; justify-content: center">
+  <div class="notification">
+    <div class="title-not">Риелтор успешно добавлен!</div>
+    <a href="/list">Перейти в список</a>
+    <div style="display: flex; justify-content: center">
+      <button (click)="toggle()" type="submit" value="Закрыть" class="btn">Закрыть</button>
+    </div>
+  </div>
+  </div>
+</div>

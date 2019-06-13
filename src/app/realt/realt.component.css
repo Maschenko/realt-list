@@ -1,0 +1,165 @@
+.width-realt {
+  display: flex;
+  justify-content: center;
+}
+
+.create-realt {
+  height: auto;
+  max-height: 500px;
+  width: 820px;
+  margin: 20px;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  border-radius: 15px;
+  box-shadow: 0 0 32px rgba(226, 226, 226, 0.5);
+}
+
+.create-realt-form {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 40px 0;
+  color: #79c6ff;
+}
+
+.form-add {
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  display: grid;
+  justify-items: center;
+}
+
+.row label {
+  color: #79c6ff;
+}
+
+.row select {
+  border: 0;
+  width: 92px;
+  height: 30px;
+  outline: none;
+  background: #f7f7f7;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #9e9c9c;
+}
+
+.create-realt-form input {
+  border: 0;
+  padding: 10px 16px 10px 16px;
+  outline: none;
+  background: #f7f7f7;
+  border-radius: 12px;
+  font-size: 13px;
+  margin: 0 0 15px;
+}
+
+.create-realt-form input:nth-child(1) {
+  width: 200px;
+  color: #9c9c9c;
+  transition: 0.3s linear;
+  transition-property: background;
+}.create-realt-form input:nth-child(2) {
+  width: 200px;
+  color: #9c9c9c;
+  transition: 0.3s linear;
+  transition-property: background;
+}.create-realt-form input:nth-child(3) {
+  width: 201px;
+  transition: 0.3s linear;
+  transition-property: background;
+}.create-realt-form input:nth-child(5) {
+ width: 130px;
+ border: 0;
+ padding: 10px 16px 10px 16px;
+ outline: none;
+ background: #a3f1d4;
+ border-radius: 22px;
+ font-size: 13px;
+ margin: 30px 0 40px;
+ font-weight: 600;
+ text-transform: uppercase;
+ cursor: pointer;
+ color: #42b188;
+ transition: 0.3s linear;
+ transition-property: color, background;
+}
+
+.create-realt-form input:nth-child(5):disabled {
+  background: #f7f7f7;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.create-realt-form input:nth-child(4):disabled:hover {
+  background: #f7f7f7;
+  color: #cccccc;
+}
+
+.create-realt-form input:nth-child(1):hover,
+.create-realt-form input:nth-child(2):hover,
+.create-realt-form input:nth-child(3):hover {
+  background: #ececec;
+}
+
+.create-realt-form input:nth-child(4):hover {
+  color: #fff;
+  background: #42b188;
+}
+
+.notification {
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  top: 254px;
+  background: #a4f1d4;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 0 52px rgba(212, 212, 212, 0.62)
+}
+
+.title-not {
+  margin: 24px 10px 18px;
+  color: #42b196;
+}
+
+.notification a {
+  text-decoration: none;
+  color: #6a9bbf;
+  transition: 0.4s linear;
+  transition-property: color;
+}
+
+.notification a:hover {
+  color: #517999;
+}
+
+.notification button {
+  width: 110px;
+  border: 0;
+  padding: 10px 16px 10px 16px;
+  outline: none;
+  background: #6fc5a5;
+  border-radius: 22px;
+  font-size: 11px;
+  margin: 16px 0 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #ffffff;
+  transition: 0.3s linear;
+  transition-property: color, background;
+}
+
+.notification button:hover {
+  color: white;
+  background: #42b188;
+}

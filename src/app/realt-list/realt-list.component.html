@@ -1,0 +1,118 @@
+<div class="block-list">
+  <div class="block-list-lists">
+    <div class="block-padding">
+      <div class="block-cart-title" >
+        <div class="block-wie">
+          <div class="block-title">Имя:</div>
+        </div>
+        <div class="block-wie">
+          <div class="block-title">Фамилия:</div>
+        </div>
+        <div class="block-wie">
+          <div class="block-title">Дата регистрации:</div>
+        </div>
+        <div style="justify-content: right">
+          <div class="block-title-edit"></div>
+        </div>
+      </div>
+      <div *ngIf="items?.length > 0;else noItems">
+        <div class="menu">
+          <input [(ngModel)]="term" type="text" placeholder="Поиск">
+        </div>
+        <div class="block-cart" *ngFor="let item of items | filter: term" (dblclick)="editItem($event, item)">
+            <div class="block-wie">
+              <div class="block-title">{{item.name}}</div>
+            </div>
+            <div class="block-wie">
+              <div class="block-title">{{item.lastName}}</div>
+            </div>
+            <div class="block-wie">
+              <div class="block-title">{{item.dateOfRegistration}}</div>
+            </div>
+            <div style="justify-content: right">
+              <img src="https://mashchenko.pro/edit-button.svg" width="30" class="block-title-edit" (click)="editItem($event, item)">
+            </div>
+            <div class="block-edit">
+              <div *ngIf="editState && itemToEdit.id == item.id">
+                <form (ngSubmit)="updateItem(item)">
+                  <div class="row" style="margin: 20px;">
+                    <img src="https:///mashchenko.pro/icons8-multiply-52.png" width="22" style="position: absolute;left: 268px;top: 10px;cursor: pointer;" *ngIf="editState && itemToEdit.id == item.id" (click)="clearState()">
+                    <div class="input">
+                      <label>
+                        <div class="name-edit">Имя:</div>
+                        <input type="text" placeholder="Новое Имя" [(ngModel)]="item.name" name="name">
+                      </label>
+                    </div>
+                    <div class="input">
+                      <label>
+                        <div class="name-edit">Фамилия:</div>
+                        <input type="text" placeholder="Новая Фамилия" [(ngModel)]="item.lastName" name="lastName">
+                      </label>
+                    </div>
+                    <div class="input">
+                      <label>
+                        <div class="name-edit">Дата регистрации:</div>
+                        <input type="date" placeholder="Новая Дата" [(ngModel)]="item.dateOfRegistration" name="Data">
+                      </label>
+                    </div>
+                    <div class="input">
+                      <label>
+                        <div class="name-edit">Департамент:</div>
+                        <select name="department" [(ngModel)]="item.depName">
+                          <!--<option disabled>Выберите героя</option>-->
+                          <option *ngFor="let dept of departments" [value]="dept.depName">
+                            {{dept.depName}}
+                          </option>
+                        </select>
+                      </label>
+                    </div>
+                    <button (click)="toggle()" type="submit" value="Update Item" class="btn-edit">Изменить</button>
+                    <button (click)="clickMethod($event, item)" class="btn-delete">Удалить</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <div class="block-pagination">
+          <div class="block-pagination-cursor" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+            Первая
+          </div>
+          <div class="block-pagination-cursor" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+            Предыдущая
+          </div>
+          <div class="block-pagination-cursor" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">
+            {{page}}
+          </div>
+          <div class="block-pagination-cursor" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+            Следующая
+          </div>
+          <div class="block-pagination-cursor" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+            Последняя
+          </div>
+        </div>
+        <div class="block-quantity">
+          <div class="quantity">Количество риэлторов: {{allItems.length}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="show">
+  <div style="display: flex; justify-content: center">
+    <div class="notification">
+      <div class="title-not">Риелтор успешно изменен!</div>
+      <div style="display: flex; justify-content: center">
+        <button (click)="toggle()" type="submit" value="Закрыть" class="btn">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noItems>
+  <div class="wrapper">
+    <div class="cssload-loader"></div>
+  </div>
+</ng-template>
